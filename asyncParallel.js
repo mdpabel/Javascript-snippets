@@ -25,4 +25,4 @@ function cb(promises) {
   console.log(promises);
 }
 
-console.log('test');
+console.log('Hello');
