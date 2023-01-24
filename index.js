@@ -6,34 +6,21 @@ class Node {
 }
 
 class SinglyLinkedList {
-  constructor(val) {
-    const node = new Node(val);
-    this.head = node;
-    this.tail = node;
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+
+  addToTail(value) {
+    let newNode = new Node(value, null);
+    if (this.tail) this.tail.next = newNode;
+    else this.head = newNode;
+    this.tail = newNode;
   }
 }
 
-const snake = new SinglyLinkedList([1, 1]);
+const ll = new SinglyLinkedList();
+ll.addToTail(2);
+ll.addToTail(3);
 
-const footConsume = (snake, newHead) => {
-  const currentHead = snake.head;
-  snake.head = newHead;
-  snake.head.next = currentHead;
-};
-
-const moveSnake = (snake, newHead) => {
-  const currentHead = snake.head;
-  snake.head = newHead;
-  currentHead.newHead = newHead;
-  snake.tail = snake.tail.next;
-};
-
-const newHead = new Node([1, 2]);
-footConsume(snake, newHead);
-footConsume(snake, new Node([1, 3]));
-
-console.log(snake);
-
-moveSnake(snake, new Node([1, 4]));
-
-console.log(snake);
+console.log(ll);
