@@ -12,15 +12,35 @@ class SinglyLinkedList {
   }
 
   addToTail(value) {
-    let newNode = new Node(value, null);
+    let newNode = new Node(value);
     if (this.tail) this.tail.next = newNode;
     else this.head = newNode;
     this.tail = newNode;
+  }
+
+  removeTail() {
+    let node = this.head;
+    if (!node) {
+      return;
+    }
+
+    if (node && !node.next) {
+      this.head = null;
+      this.tail = null;
+      return;
+    }
+
+    while (node && node.next && node.next.next) {
+      node = node.next;
+    }
+    node.next = null;
+    this.tail = node;
   }
 }
 
 const ll = new SinglyLinkedList();
 ll.addToTail(2);
-ll.addToTail(3);
+
+ll.removeTail();
 
 console.log(ll);
